@@ -26,7 +26,7 @@ class ProfileController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->avatar = $imagePath;
+        $user->avatar = isset($imagePath) ? $imagePath : $user->avatar;
         $user->save();
 
         toastr('Updated Successfully!', 'success');
