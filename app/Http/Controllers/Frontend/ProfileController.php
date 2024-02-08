@@ -22,4 +22,8 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    function updatePassword(): RedirectResponse
+    {
+    }
 }

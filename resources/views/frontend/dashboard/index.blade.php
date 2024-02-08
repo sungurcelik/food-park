@@ -2,8 +2,8 @@
 
 @section('content')
     <!--=============================
-                            BREADCRUMB START
-                        ==============================-->
+                                    BREADCRUMB START
+                                ==============================-->
     <section class="fp__breadcrumb" style="background: url(images/counter_bg.jpg);">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
@@ -18,13 +18,13 @@
         </div>
     </section>
     <!--=============================
-                            BREADCRUMB END
-                        ==============================-->
+                                    BREADCRUMB END
+                                ==============================-->
 
 
     <!--=========================
-                            DASHBOARD START
-                        ==========================-->
+                                    DASHBOARD START
+                                ==========================-->
     <section class="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
         <div class="container">
             <div class="fp__dashboard_area">
@@ -136,7 +136,8 @@
                                                         <div class="col-xl-12 col-lg-12">
                                                             <div class="fp__comment_imput_single">
                                                                 <label>email</label>
-                                                                <input type="email" name="email" placeholder="Email" value="{{ auth()->user()->email }}">
+                                                                <input type="email" name="email" placeholder="Email"
+                                                                    value="{{ auth()->user()->email }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-12">
@@ -1134,42 +1135,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                    aria-labelledby="v-pills-settings-tab">
-                                    <div class="fp_dashboard_body fp__change_password">
-                                        <div class="fp__review_input">
-                                            <h3>change password</h3>
-                                            <div class="comment_input pt-0">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-xl-6">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>Current Password</label>
-                                                                <input type="password" placeholder="Current Password">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>New Password</label>
-                                                                <input type="password" placeholder="New Password">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-12">
-                                                            <div class="fp__comment_imput_single">
-                                                                <label>confirm Password</label>
-                                                                <input type="password" placeholder="Confirm Password">
-                                                            </div>
-                                                            <button type="submit"
-                                                                class="common_btn mt_20">submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @include('frontend.dashboard.change-password')
                             </div>
                         </div>
                     </div>
@@ -1264,6 +1230,6 @@
     </div>
     <!-- CART POPUT END -->
     <!--=========================
-                            DASHBOARD END
-                        ==========================-->
+                                    DASHBOARD END
+                                ==========================-->
 @endsection
