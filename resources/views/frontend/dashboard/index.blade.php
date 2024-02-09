@@ -2,8 +2,8 @@
 
 @section('content')
     <!--=============================
-                                    BREADCRUMB START
-                                ==============================-->
+                                                    BREADCRUMB START
+                                                ==============================-->
     <section class="fp__breadcrumb" style="background: url(images/counter_bg.jpg);">
         <div class="fp__breadcrumb_overlay">
             <div class="container">
@@ -18,13 +18,13 @@
         </div>
     </section>
     <!--=============================
-                                    BREADCRUMB END
-                                ==============================-->
+                                                    BREADCRUMB END
+                                                ==============================-->
 
 
     <!--=========================
-                                    DASHBOARD START
-                                ==========================-->
+                                                    DASHBOARD START
+                                                ==========================-->
     <section class="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
         <div class="container">
             <div class="fp__dashboard_area">
@@ -33,11 +33,14 @@
                         <div class="fp__dashboard_menu">
                             <div class="dasboard_header">
                                 <div class="dasboard_header_img">
-                                    <img src="images/comment_img_2.png" alt="user" class="img-fluid w-100">
+                                    <img src="{{ auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
                                     <label for="upload"><i class="far fa-camera"></i></label>
-                                    <input type="file" id="upload" hidden>
+                                    <form id="avatar_form" action="" method="POST">
+
+                                        <input type="file" id="upload" hidden name="avatar">
+                                    </form>
                                 </div>
-                                <h2>hasib ahmed</h2>
+                                <h2>{{ auth()->user()->name }}</h2>
                             </div>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
@@ -70,9 +73,14 @@
                                     data-bs-target="#v-pills-settings" type="button" role="tab"
                                     aria-controls="v-pills-settings" aria-selected="false"><span><i
                                             class="fas fa-user-lock"></i></span> Change Password </button>
-
-                                <button class="nav-link" type="button"><span> <i class="fas fa-sign-out-alt"></i>
-                                    </span> Logout</button>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="nav-link"
+                                        onclick="event.preventDefault();
+                                        this.closest('form').submit();"
+                                        type="button"><span> <i class="fas fa-sign-out-alt"></i>
+                                        </span> Logout</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -1230,6 +1238,32 @@
     </div>
     <!-- CART POPUT END -->
     <!--=========================
-                                    DASHBOARD END
-                                ==========================-->
+                                                    DASHBOARD END
+                                                ==========================-->
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#upload').on('change', function() {
+                let form = $('#avatar_form')[0];
+                let formData = new FormData(form);
+                $.ajax({
+                    method: "POST",
+                    url: "{{ route('profile.avatar.update') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            window.location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.error(response);
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
