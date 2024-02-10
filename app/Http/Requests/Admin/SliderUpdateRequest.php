@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SliderCreateRequest extends FormRequest
+class SliderUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class SliderCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => ['required', 'image', 'max:3000'],
+            'image' => ['nullable', 'image', 'max:3000'],
             'offer' => ['nullable', 'string', 'max:50'],
             'title' => ['required', 'max:255'],
             'sub_title' => ['required', 'max:255'],
