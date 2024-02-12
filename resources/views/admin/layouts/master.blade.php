@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>General Dashboard &mdash; Stisla</title>
 
     <!-- General CSS Files -->
@@ -88,11 +89,18 @@
             success_callback: null // Default: null
         });
 
+        // Set csrf at ajax header
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         $(document).ready(function() {
 
             $('body').on('click', '.delete-item', function(e) {
                 e.preventDefault()
+                let url = $(this).attr('href');
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You won't be able to revert this!",
@@ -103,10 +111,20 @@
                     confirmButtonText: "Yes, delete it!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    toastr.success(response.message)
+                                    $('#slider-table').DataTable().draw();
+                                } else if (response.status === 'error') {
+                                    toastr.success(response.message)
+                                }
+                            },
+                            error: function() {
+                                console.error(error);
+                            }
                         })
                     }
                 })

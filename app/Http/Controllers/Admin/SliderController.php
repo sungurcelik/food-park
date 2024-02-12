@@ -72,7 +72,7 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SliderUpdateRequest $request, string $id) : RedirectResponse
+    public function update(SliderUpdateRequest $request, string $id): RedirectResponse
     {
         $slider = Slider::findOrFail($id);
 
@@ -98,6 +98,13 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $slider = Slider::findOrFail($id);
+            $slider->delete();
+
+            return response(['status' => 'success', 'message' => 'Deleted Successfully!!']);
+        } catch (\Exception $e) {
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

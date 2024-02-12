@@ -120,8 +120,8 @@
                 toastr.error("{{ $error }}")
             @endforeach
         @endif
-    </script>
-    <script type="text/javascript">
+
+        // Set csrf at ajax header
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
