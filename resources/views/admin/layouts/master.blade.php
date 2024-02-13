@@ -90,11 +90,11 @@
         });
 
         // Set csrf at ajax header
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
 
         $(document).ready(function() {
 
@@ -114,10 +114,13 @@
                         $.ajax({
                             method: 'DELETE',
                             url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
                             success: function(response) {
                                 if (response.status === 'success') {
                                     toastr.success(response.message)
-                                    $('#slider-table').DataTable().draw();
+                                    window.location.reload();
                                 } else if (response.status === 'error') {
                                     toastr.success(response.message)
                                 }
