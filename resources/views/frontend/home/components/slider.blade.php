@@ -1,4 +1,4 @@
-<section class="fp__banner" style="background: url(images/banner_bg.jpg);">
+<section class="fp__banner" style="background: url({{ asset('frontend/images/banner_bg.jpg') }});">
     <div class="fp__banner_overlay">
         <div class="row banner_slider">
 
@@ -20,12 +20,14 @@
                                 </div>
                                 <div class="col-xl-5 col-md-7 col-lg-6">
                                     <div class="fp__banner_text wow fadeInRight" data-wow-duration="1s">
-                                        <h1>{{ $slider->title }}</h1>
-                                        <h3>{{ $slider->sub_title }}</h3>
-                                        <p>{{ $slider->short_description }}</p>
+                                        <h1>{!! $slider->title !!}</h1>
+                                        <h3>{!! $slider->sub_title !!}</h3>
+                                        <p>{!! $slider->short_description !!}</p>
                                         <ul class="d-flex flex-wrap">
-                                            <li><a class="common_btn" href="{{ $slider->button_link }}">shop now</a>
-                                            </li>
+                                            @if ($slider->button_link)
+                                                <li><a class="common_btn" href="{!! $slider->button_link !!}">shop now</a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
