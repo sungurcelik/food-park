@@ -13,21 +13,26 @@
                     <div class="accordion">
                         <div class="accordion-header collapsed bg-primary text-light p-3" role="button" data-toggle="collapse"
                             data-target="#panel-body-1" aria-expanded="false">
-                            <h4>Panel 1</h4>
+                            <h4>Why Choose Us Section Titles..</h4>
                         </div>
                         <div class="accordion-body collapse" id="panel-body-1" data-parent="#accordion" style="">
-                            <form action="">
+                            <form action="{{ route('admin.why-choose-title.update') }}" method="POST">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="">Top Title</label>
-                                    <input name="why_choose_us_top_title" type="text" class="form-control">
+                                    <input type="text" class="form-control" name="why_choose_us_top_title"
+                                        value="{{ @$titles['why_choose_us_top_title'] }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Main Title</label>
-                                    <input name="why_choose_us_main_title" type="text" class="form-control">
+                                    <input type="text" class="form-control" name="why_choose_us_main_title"
+                                        value="{{ @$titles['why_choose_us_main_title'] }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Sub Title</label>
-                                    <input name="why_choose_us_sub_title" type="text" class="form-control">
+                                    <input type="text" class="form-control" name="why_choose_us_sub_title"
+                                        value="{{ @$titles['why_choose_us_sub_title'] }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
@@ -45,7 +50,7 @@
             <div class="card-header">
                 <h4>Why Choose Us Titles</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.slider.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.why-choose-us.create') }}" class="btn btn-primary">
                         Create New
                     </a>
                 </div>

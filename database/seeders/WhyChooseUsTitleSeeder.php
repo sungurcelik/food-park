@@ -6,7 +6,7 @@ use App\Models\SectionTitle;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class WhyChooseUsSeeder extends Seeder
+class WhyChooseUsTitleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +15,15 @@ class WhyChooseUsSeeder extends Seeder
     {
         SectionTitle::insert([
             [
-                'key' => 'why_choose_top_title',
+                'key' => 'why_choose_us_top_title',
                 'value' => 'Why Choose Us'
             ],
             [
-                'key' => 'why_choose_main_title',
+                'key' => 'why_choose_us_main_title',
                 'value' => 'Why Choose Us'
             ],
             [
-                'key' => 'why_choose_sub_title',
+                'key' => 'why_choose_us_sub_title',
                 'value' => 'Objectively pontificate quality models before intuitive information. Dramatically recaptiualize multifunctional materials.'
             ],
         ]);
