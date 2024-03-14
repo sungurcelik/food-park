@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WhyChooseUs;
@@ -26,6 +27,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('why-choose-us', WhyChooseUsController::class);
 
     /** Product Category Routes */
-
     Route::resource('category', CategoryController::class);
+
+    /** Product Category Routes */
+    Route::resource('product', ProductController::class);
 });

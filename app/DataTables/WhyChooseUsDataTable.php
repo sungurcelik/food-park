@@ -36,7 +36,7 @@ class WhyChooseUsDataTable extends DataTable
                 if ($query->status === 1) {
                     return '<span class="badge badge-primary">Active</span>';
                 } else {
-                    return '<span class="badge badge-warning">InActive</span>';
+                    return '<span class="badge badge-danger">InActive</span>';
                 }
             })
             ->rawColumns(['icon', 'action', 'status'])

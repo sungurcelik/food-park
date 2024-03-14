@@ -42,7 +42,7 @@ class CategoryDataTable extends DataTable
                     return '<span class="badge badge-danger">InActive</span>';
                 }
             })
-            ->rawColumns(['show_at_home', 'status', 'action'])
+            ->rawColumns(['show_at_home',  'action', 'status'])
             ->setRowId('id');
     }
 
